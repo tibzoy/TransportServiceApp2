@@ -1,6 +1,6 @@
 # TransportServiceApp2
 
-A simple app to management transportation requests for employees and driver
+A simple app to manage transportation requests for employees and driver
 
 ## Dev Env
 * To install, execute in both root and backend/ folders:
