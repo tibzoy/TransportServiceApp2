@@ -1,0 +1,61 @@
+<div class="card">
+    <div class="card-header text-center">
+      <h3>New Transport Request</h3>
+    </div>
+    <div class="card-body">
+      <h4><span class="badge badge-info">{{ request.status }}</span></h4>
+      <form #requestForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <table class="table request-detail">
+            <tbody>
+              <tr>
+                <th>Pickup Date/Time</th>
+                <td>
+                  <input [(ngModel)]="request.from" name="from" type="datetime-local" class="form-control" placeholder="mm/dd/yyy hh:mm AM/PM" min="{{dateNow}}" required/>
+                </td>
+                </tr>
+              <tr>
+                <th>Pickup Place</th>
+                <td><input [(ngModel)]="request.pickup" name="pickup" type="text" class="form-control" placeholder="Where do you want to be picked up?" required/></td>
+              </tr>
+              <tr>
+                <th>Destination</th>
+                <td><input [(ngModel)]="request.destination" name="destination" type="text" class="form-control" placeholder="Where is your destination?" required/></td>
+              </tr>
+              <tr>
+                <th>Purpose</th>
+                <td><input [(ngModel)]="request.purpose" name="purpose" type="text" class="form-control" placeholder="What is the purposed of your trip?" required/></td>
+              </tr>
+              <tr>
+                <th>Passengers</th>
+                <td><input [(ngModel)]="request.passengers" name="passengers" type="number" class="form-control" required max="10"/></td>
+              </tr>
+              <tr>
+                <th>Vehicle</th>
+                <td>
+                  <select [(ngModel)]="request.vehicle" name="vehicle" class="form-control" required>
+                    <option *ngFor="let v of vehicles" value="{{ v._id }}">{{ v.name }}</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th>Requester</th>
+                <td><input [(ngModel)]="request.requester" name="requester" type="text" class="form-control" placeholder="Enter your full name" required/></td>
+              </tr>
+              <tr>
+                <th>Department</th>
+                <td>
+                  <select [(ngModel)]="request.department" name="department" class="form-control" required>
+                    <option *ngFor="let d of departments" value="{{d._id}}">{{d.name}}</option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" [disabled]="!requestForm.form.valid">Submit</button>
+        <button class="btn btn-secondary btn-block">Cancel</button>
+      </form>
+    </div>
+  </div>
+

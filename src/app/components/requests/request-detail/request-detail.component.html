@@ -1,0 +1,38 @@
+<div *ngIf="request" class="card">
+    <div class="card-header text-center">
+      <h3>Transport Request</h3>
+    </div>
+    <div class="card-body">
+      <h4><span class="badge badge-info">{{ request.status }}</span></h4>
+      <table class="table request-detail">
+        <tbody>
+          <tr>
+            <th>Pickup</th>
+            <td>{{request.pickup}} @ {{request.from}}</td>
+          </tr>
+          <tr>
+            <th>Destination</th>
+            <td>{{request.destination}}</td>
+          </tr>
+          <tr>
+            <th>Purpose</th>
+            <td>{{request.purpose}}</td>
+          </tr>
+          <tr>
+            <th>Passengers</th>
+            <td>{{request.requester}} ({{request.department}}), {{request.passengers}} pax</td>
+          </tr>
+          <tr>
+            <th>Service Vehicle</th>
+            <td>{{request.vehicle.name}} ({{request.vehicle.plateNumber}}) driven by  {{request.vehicle.driver}}</td>
+          </tr>
+          <tr>
+            <th>Requested</th>
+            <td>{{request.created}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <button (click)="accept(request)" class="btn btn btn-primary btn-lg btn-block">Accept</button>
+      <button (click)="back()" class="btn btn-secondary btn-lg btn-block">Back</button>
+    </div>
+  </div>

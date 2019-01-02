@@ -1,0 +1,5 @@
+table.requests tbody tr:hover{
+  color: #607D8B;
+  background-color: #DDD;
+  cursor: pointer;
+}

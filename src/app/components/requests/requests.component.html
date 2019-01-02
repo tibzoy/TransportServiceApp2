@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-4">
+      <div class="form-group">
+          <select (change)="setDay($event)" class="form-control day">
+            <option value="today" selected>Today</option>
+            <option value="tomorrow">Tomorrow</option>
+          </select>
+        </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <table class="table table-striped requests">
+      <thead>
+        <tr>
+          <th>Request</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let request of requests" routerLink="/requests/{{request._id}}">
+            <td>
+                <h6>{{ request.pickup }} > {{ request.destination }}</h6>
+                <h3>{{ request.purpose }}</h3>
+                <h6>{{ request.from }}</h6>
+                <p><span class="badge badge-info">{{ request.status }}</span></p>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
