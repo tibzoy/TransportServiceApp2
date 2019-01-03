@@ -8,7 +8,7 @@
         <tbody>
           <tr>
             <th>Pickup</th>
-            <td>{{request.pickup}} @ {{request.from}}</td>
+            <td>{{request.pickup}} @ {{request.from | date : 'medium'}}</td>
           </tr>
           <tr>
             <th>Destination</th>
@@ -24,11 +24,11 @@
           </tr>
           <tr>
             <th>Service Vehicle</th>
-            <td>{{request.vehicle.name}} ({{request.vehicle.plateNumber}}) driven by  {{request.vehicle.driver}}</td>
+            <td>{{request.vehicle.name}} ({{request.vehicle.plate}})</td>
           </tr>
           <tr>
             <th>Requested</th>
-            <td>{{request.created}}</td>
+            <td>{{request.created | date : 'medium'}}</td>
           </tr>
         </tbody>
       </table>
