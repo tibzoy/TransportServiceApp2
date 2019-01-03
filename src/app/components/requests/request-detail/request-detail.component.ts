@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Request } from '../request';
 import { RequestService } from '../../../services/request/request.service';
+import { RequestStatus } from '../request-enum';
 
 @Component({
   selector: 'app-request-detail',
@@ -12,6 +13,7 @@ import { RequestService } from '../../../services/request/request.service';
 export class RequestDetailComponent implements OnInit {
 
   request: Request;
+  statusEnum: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -20,6 +22,7 @@ export class RequestDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.statusEnum = RequestStatus;
     this.getRequest();
   }
 
@@ -29,11 +32,28 @@ export class RequestDetailComponent implements OnInit {
   }
 
   accept(request: Request): void {
-    alert(`TODO: Accept request id=${request._id}`);
+    this.requestService.acceptRequest(request).subscribe(_request => this.request = _request);
+  }
+
+  complete(): void {
+    // TODO: implement
   }
 
   back(): void {
     this.location.back();
+  }
+
+  canComplete(): boolean {
+    return this.request.status === RequestStatus.IN_PROGRESS && this.isDriverUser();
+  }
+
+  canAccept(): boolean {
+    return this.request.status === RequestStatus.SUBMITTED && this.isDriverUser();
+  }
+
+  isDriverUser(): boolean {
+    // TODO: verify if user is driver
+    return true;
   }
 
 }

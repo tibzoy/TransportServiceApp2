@@ -42,6 +42,14 @@ export class RequestService {
     );
   }
 
+  acceptRequest(request: Request): Observable<Request> {
+    const _url = `${this.apiUrl}/${request._id}/accept`;
+    return this.http.put(_url, {}, httpOptions).pipe(
+      tap(_ => this.log(`Doing acceptRequest ${request._id}`)),
+      catchError(this.handleError<any>('acceptRequest'))
+    );
+  }
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
@@ -56,5 +64,7 @@ export class RequestService {
     };
   }
 
-  private log(message: string) {}
+  private log(message: string) {
+    console.log(message);
+  }
 }

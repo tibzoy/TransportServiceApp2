@@ -1,10 +1,33 @@
 import { Request, Response } from 'express';
 import { RequestSchema } from '../models/request';
 import * as mongoose from 'mongoose';
+import { Status } from '../models/status-enum';
 
 const Request = mongoose.model('Request', RequestSchema);
 
 export class RequestController {
+
+  public acceptRequest(req: Request, res: Response): void {
+    const id = req.params.requestId;
+    Request.findOneAndUpdate(
+      {_id: id},
+      {
+        $set: {
+          status: Status.IN_PROGRESS
+        }
+      },
+      {
+        new: true
+      },
+      (err, request) => {
+        if (err) {
+          res.status(422).send(err);
+        } else {
+          res.status(200).json(request);
+        }
+      }
+    );
+  }
 
   public createRequest(req: Request, res: Response): void {
     const newRequest = new Request(req.body);

@@ -15,6 +15,9 @@ export class Routes {
       .get( this.requestController.getRequests );
     app.route('/request/:requestId')
       .get( this.requestController.getRequest );
+
+    app.route('/request/:requestId/accept')
+      .put( this.requestController.acceptRequest );
   }
 
 }

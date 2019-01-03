@@ -3,7 +3,10 @@
       <h3>Transport Request</h3>
     </div>
     <div class="card-body">
-      <h4><span class="badge badge-info">{{ request.status }}</span></h4>
+      <h4><span class="badge" 
+          [class.badge-success]="request.status === statusEnum.IN_PROGRESS"
+          [class.badge-info]="request.status === statusEnum.SUBMITTED"
+          >{{ request.status }}</span></h4>
       <table class="table request-detail">
         <tbody>
           <tr>
@@ -32,7 +35,8 @@
           </tr>
         </tbody>
       </table>
-      <button (click)="accept(request)" class="btn btn btn-primary btn-lg btn-block">Accept</button>
+      <button *ngIf="canAccept()" (click)="accept(request)" class="btn btn btn-primary btn-lg btn-block">Accept</button>
+      <button *ngIf="canComplete()" (click)="complete(request)" class="btn btn btn-success btn-lg btn-block">Mark Done</button>
       <button (click)="back()" class="btn btn-secondary btn-lg btn-block">Back</button>
     </div>
   </div>
