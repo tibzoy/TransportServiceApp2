@@ -7,6 +7,28 @@ const Request = mongoose.model('Request', RequestSchema);
 
 export class RequestController {
 
+  public completeRequest(req: Request, res: Response): void {
+    const id = req.params.requestId;
+    Request.findOneAndUpdate(
+      {_id: id},
+      {
+        $set: {
+          status: Status.COMPLETED
+        }
+      },
+      {
+        new: true
+      },
+      (err, request) => {
+        if (err) {
+          res.status(422).send(err);
+        } else {
+          res.status(200).json(request);
+        }
+      }
+    );
+  }
+
   public acceptRequest(req: Request, res: Response): void {
     const id = req.params.requestId;
     Request.findOneAndUpdate(

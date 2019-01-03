@@ -4,7 +4,8 @@
     </div>
     <div class="card-body">
       <h4><span class="badge" 
-          [class.badge-success]="request.status === statusEnum.IN_PROGRESS"
+          [class.badge-warning]="request.status === statusEnum.IN_PROGRESS"
+          [class.badge-success]="request.status === statusEnum.COMPLETED"
           [class.badge-info]="request.status === statusEnum.SUBMITTED"
           >{{ request.status }}</span></h4>
       <table class="table request-detail">

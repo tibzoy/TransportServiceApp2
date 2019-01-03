@@ -25,7 +25,8 @@
                 <h6>{{ request.from | date : 'medium' }}</h6>
                 <p><span class="badge"
                   [class.badge-info]="request.status === requestStatus.SUBMITTED"
-                  [class.badge-success]="request.status === requestStatus.IN_PROGRESS"
+                  [class.badge-warning]="request.status === requestStatus.IN_PROGRESS"
+                  [class.badge-success]="request.status === requestStatus.COMPLETED"
                 >{{ request.status }}</span></p>
             </td>
           </tr>

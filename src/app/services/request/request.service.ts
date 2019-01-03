@@ -50,6 +50,14 @@ export class RequestService {
     );
   }
 
+  completeRequest(request: Request): Observable<Request> {
+    const _url = `${this.apiUrl}/${request._id}/complete`;
+    return this.http.put(_url, {}, httpOptions).pipe(
+      tap(_ => this.log(`Doing completeRequest ${request._id}`)),
+      catchError(this.handleError<any>('completeRequest'))
+    );
+  }
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 

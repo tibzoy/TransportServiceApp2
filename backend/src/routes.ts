@@ -18,6 +18,9 @@ export class Routes {
 
     app.route('/request/:requestId/accept')
       .put( this.requestController.acceptRequest );
+
+    app.route('/request/:requestId/complete')
+      .put( this.requestController.completeRequest );
   }
 
 }

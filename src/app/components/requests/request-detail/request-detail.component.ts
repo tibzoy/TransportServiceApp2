@@ -35,8 +35,8 @@ export class RequestDetailComponent implements OnInit {
     this.requestService.acceptRequest(request).subscribe(_request => this.request = _request);
   }
 
-  complete(): void {
-    // TODO: implement
+  complete(request: Request): void {
+    this.requestService.completeRequest(request).subscribe(_request => this.request = _request);
   }
 
   back(): void {
