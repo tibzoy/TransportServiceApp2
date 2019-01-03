@@ -18,9 +18,9 @@ export class RequestService {
 
   constructor(private http: HttpClient) { }
 
-  getRequests(): Observable<Request[]> {
+  getRequests(date: String): Observable<Request[]> {
     return this.http
-      .get<Request[]>(this.apiUrl)
+      .get<Request[]>(this.apiUrl + '?d=' + date)
       .pipe(
         tap(_ => this.log(`Doing getRequests...`)),
         catchError(this.handleError<any>('getRequests'))
@@ -56,8 +56,5 @@ export class RequestService {
     };
   }
 
-  /** Log a HeroService message with the MessageService */
-  private log(message: string) {
-    console.log(message);
-  }
+  private log(message: string) {}
 }

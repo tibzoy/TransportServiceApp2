@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { RequestsComponent } from './requests.component';
 
@@ -11,7 +13,7 @@ describe('RequestsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ RequestsComponent ],
-      imports: [FormsModule, RouterTestingModule]
+      imports: [FormsModule, RouterTestingModule, HttpClientModule, HttpClientTestingModule]
     })
     .compileComponents();
   }));
@@ -24,9 +26,5 @@ describe('RequestsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should fetch at least 1 request', () => {
-    expect(component.requests.length).toBeGreaterThanOrEqual(1);
   });
 });

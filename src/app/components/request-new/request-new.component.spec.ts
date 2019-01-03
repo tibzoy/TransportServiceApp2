@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 
 import { RequestNewComponent } from './request-new.component';
@@ -12,7 +14,7 @@ describe('RequestNewComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ RequestNewComponent ],
-      imports: [FormsModule, RouterTestingModule]
+      imports: [FormsModule, RouterTestingModule, HttpClientModule, HttpClientTestingModule]
     })
     .compileComponents();
   }));
