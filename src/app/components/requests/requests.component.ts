@@ -48,7 +48,6 @@ export class RequestsComponent implements OnInit {
 
   setDay(option: any): void {
     const day = option.target.value;
-    console.log(`TODO: Fetch ${day} requests`);
     this.requestService.getRequests(day).subscribe( requests => this.requests = requests );
   }
 

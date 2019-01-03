@@ -56,8 +56,5 @@ export class RequestService {
     };
   }
 
-  /** Log a HeroService message with the MessageService */
-  private log(message: string) {
-    console.log(message);
-  }
+  private log(message: string) {}
 }
