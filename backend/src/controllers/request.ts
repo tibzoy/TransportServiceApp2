@@ -18,7 +18,15 @@ export class RequestController {
   }
 
   public getRequests(req: Request, res: Response): void {
-    Request.find({}, (err, requests) => {
+    const _date = req.query.d.length ? req.query.d : new Date().toISOString().split('T')[0].toString();
+    const _from = new Date(`${_date}T00:00:00.000Z`);
+    const _to = new Date(`${_date}T23:59:59.000Z`);
+    Request.find({
+      from: {
+        $gte: _from,
+        $lt: _to
+      }
+    }, (err, requests) => {
       if ( err ) {
         res.status(404).send(err);
       } else {

@@ -2,8 +2,8 @@
   <div class="col-4">
       <div class="form-group">
           <select (change)="setDay($event)" class="form-control day">
-            <option value="today" selected>Today</option>
-            <option value="tomorrow">Tomorrow</option>
+            <option value="{{ today }}" selected>Today</option>
+            <option value="{{ tomorrow }}">Tomorrow</option>
           </select>
         </div>
   </div>
